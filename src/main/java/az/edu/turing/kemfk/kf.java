@@ -1,6 +1,6 @@
-package az.edu.turing.kemfk;
+package az.edu.turing.hello;
 
-public class kf {
+public class Salam {
     public static void main(String[] args) {
         System.out.println("Hello");
     }
