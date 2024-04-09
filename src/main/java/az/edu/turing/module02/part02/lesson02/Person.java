@@ -2,7 +2,7 @@ package az.edu.turing.module02.part02.lesson02;
 
 import java.util.Objects;
 
-public class Person implements Comparable<Person> {
+public class Person  {
     private int age;
     private String name;
     private int iq;
@@ -45,10 +45,6 @@ public class Person implements Comparable<Person> {
         return Objects.hash(age, name);
     }
 
-    @Override
-    public int compareTo(Person that) {
-        return this.age- that.age;
-    }
 
     @Override
     public String toString() {
