@@ -28,8 +28,6 @@ import java.util.Set;
         }
 
         public abstract void respond();
-
-        public abstract void foul();
         public Species getSpecies() {
             return species;
         }

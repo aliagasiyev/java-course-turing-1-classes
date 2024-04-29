@@ -2,7 +2,7 @@ package az.edu.turing.module02.part02.MiniProject;
 
 import java.util.Set;
 
-public class Fish extends Pet {
+public class Fish extends Pet implements Foul {
     Fish() {
         super();
     }
@@ -24,7 +24,6 @@ public class Fish extends Pet {
 
     @Override
     public void foul() {
-        System.out.println("Foul method in Fish clsss");
+        System.out.println("Foul method in Fish class");
     }
-
 }

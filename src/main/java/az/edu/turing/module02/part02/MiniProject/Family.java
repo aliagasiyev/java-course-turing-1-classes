@@ -45,6 +45,13 @@ public class Family {
         }
         return false;
     }
+    public int countFamily() {
+        int count = 0;
+        if (mother != null) count++;
+        if (father != null) count++;
+        if (children != null) count += children.size();
+        return count;
+    }
 
     public Human getFather() {
         return father;

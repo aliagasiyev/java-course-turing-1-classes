@@ -2,7 +2,7 @@ package az.edu.turing.module02.part02.MiniProject;
 
 import java.util.Set;
 
-public class RoboCat extends Pet {
+public class RoboCat extends Pet implements Foul {
     RoboCat() {
         super();
     }
@@ -25,6 +25,7 @@ public class RoboCat extends Pet {
 
     @Override
     public void foul() {
-        System.out.println("Foul of RoboCat");
+        System.out.println("Foult method in RoboCat class");
     }
 }
+

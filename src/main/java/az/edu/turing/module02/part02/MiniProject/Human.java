@@ -121,10 +121,4 @@ public class Human {
         return Objects.hash(getName(), getSurname(), getYear(), getIq(), getFamily(), getSchedule());
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Object of Human class deleted");
-        super.finalize();
-    }
-
 }

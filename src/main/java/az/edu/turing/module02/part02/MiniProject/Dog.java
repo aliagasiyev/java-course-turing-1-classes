@@ -2,7 +2,7 @@ package az.edu.turing.module02.part02.MiniProject;
 
 import java.util.Set;
 
-public class Dog extends Pet {
+public class Dog extends Pet implements Foul {
     Dog() {
         super();
     }

@@ -2,7 +2,7 @@ package az.edu.turing.module02.part02.MiniProject;
 import java.util.Map;
 
 
-public class Man extends Human{
+public final class Man extends Human{
     Man() {
         super();
     }
@@ -17,6 +17,9 @@ public class Man extends Human{
 
     public Man(String name, String surname, int year, Map<DayOfWeek, String> schedule) {
         super(name, surname, year, schedule);
+    }
+
+    public Man(String manName, String surname) {
     }
 
     public void repairCar() {

@@ -1,7 +1,7 @@
 package az.edu.turing.module02.part02.MiniProject;
 import java.util.Map;
 
-public class Woman extends Human {
+public final class Woman extends Human {
         Woman() {
             super();
         }
@@ -17,7 +17,11 @@ public class Woman extends Human {
         Woman(String name, String surname, int year, int iq, Family family, Map<DayOfWeek, String> schedule) {
             super(name, surname, year, iq, schedule, family);
         }
-        public void makeUp() {
+
+    public Woman(String womanName, String surname) {
+    }
+
+    public void makeUp() {
             System.out.println("Woman likes makeUp");
         }
 
