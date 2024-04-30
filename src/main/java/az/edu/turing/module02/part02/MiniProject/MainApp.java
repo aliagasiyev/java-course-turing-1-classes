@@ -17,7 +17,7 @@ public class MainApp {
         FamilyService familyService = new FamilyService(familyDao);
         FamilyController familyController = new FamilyController(familyService);
 
-        boolean isrunning=true;
+        boolean isrunning = true;
         while (true) {
             printMenu();
             String command = new Scanner(System.in).nextLine().trim();
@@ -38,43 +38,85 @@ public class MainApp {
                             Woman womanRelish = new Woman("Olive", "Relish", 1977);
                             womanRelish.setIq(77);
                             Family family1 = new Family(manRelish, womanRelish);
-                        }catch (FamilyOverflowException e){
+                        } catch (FamilyOverflowException e) {
                             throw new FamilyOverflowException(e.getMessage());
                         }
 
                         break;
                     case "2":
-                        familyController.displayAllFamilies();
+                        try {
+                            familyController.displayAllFamilies();
+                        }catch (FamilyOverflowException e) {
+                            throw new FamilyOverflowException(e.getMessage());
+                        }
                         break;
                     case "3":
+                        try {
+                            System.out.println(familyController.getFamiliesBiggerThan(3));
+                        } catch (FamilyOverflowException e) {
+                            throw new FamilyOverflowException(e.getMessage());
+                        }
                         System.out.println(familyController.getFamiliesBiggerThan(3));
-                        ;
+
                         break;
                     case "4":
-                        System.out.println(familyController.getFamiliesLessThan(4));
-                        ;
+                        try {
+                            System.out.println(familyController.getFamiliesLessThan(4));
+                        } catch (FamilyOverflowException e) {
+                            throw new FamilyOverflowException(e.getMessage());
+                        }
+
                         break;
                     case "5":
-                        System.out.println(familyController.countFamiliesWithMemberNumber(3));
-                        ;
+                        try {
+                            System.out.println(familyController.countFamiliesWithMemberNumber(3));
+                        } catch (FamilyOverflowException e) {
+                            throw new FamilyOverflowException(e.getMessage());
+                        }
+
                         break;
                     case "6":
-                        familyController.creatNewFamily(new Woman("Mia", "Wiliam", 2000), new Man("Tom", "William", 1970));
+                        try {
+                            familyController.creatNewFamily(new Woman("Mia", "Wiliam", 2000), new Man("Tom", "William", 1970));
+                        } catch (FamilyOverflowException e) {
+                            throw new FamilyOverflowException(e.getMessage());
+                        }
                         break;
                     case "7":
-                        System.out.print("Enter the index of the family to delete: ");
-                        int indexToDelete = Integer.parseInt(new Scanner(System.in).nextLine().trim());
-                        System.out.println(familyDao.deleteFamily(indexToDelete));
+                        try {
+                            System.out.print("Enter the index of the family to delete: ");
+                            int indexToDelete = Integer.parseInt(new Scanner(System.in).nextLine().trim());
+                            System.out.println(familyDao.deleteFamily(indexToDelete));
+                        } catch (FamilyOverflowException e) {
+                            throw new FamilyOverflowException(e.getMessage());
+                        }
                         break;
 
                     case "8.1":
-                        System.out.println(familyController.bornChild(familyDao.getFamilyByIndex(0), "Oskar", "man"));
+                        try {
+                            System.out.println(familyController.bornChild(familyDao.getFamilyByIndex(0), "Oskar", "man"));
+
+                        } catch (FamilyOverflowException e) {
+                            throw new FamilyOverflowException(e.getMessage());
+                        }
+
                         break;
                     case "8.2":
-                        System.out.println(familyController.adoptChild(familyDao.getFamilyByIndex(0), new Human("Tommy", "Smith", 2002)));
+                        try {
+                            System.out.println(familyController.adoptChild(familyDao.getFamilyByIndex(0),
+                                    new Human("Tommy", "Smith", 2002)));
+                        } catch (FamilyOverflowException e) {
+                            throw new FamilyOverflowException(e.getMessage());
+                        }
                         break;
+
                     case "9":
-                        familyController.deleteAllChildrenOlderThan(18);
+                        try {
+                            familyController.deleteAllChildrenOlderThan(18);
+                        } catch (FamilyOverflowException e) {
+                            throw new FamilyOverflowException(e.getMessage());
+                        }
+
                         break;
                     case "exit":
                         System.out.println("Exiting system ");
@@ -89,6 +131,7 @@ public class MainApp {
         }
 
     }
+
     private static void printMenu() {
         System.out.println("Choose an option:");
         System.out.println("1. Fill with test data");
@@ -104,4 +147,4 @@ public class MainApp {
         System.out.println("Type 'exit' to quit");
         System.out.print("Enter your choice: ");
     }
-    }
+}
