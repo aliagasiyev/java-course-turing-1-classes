@@ -1,6 +1,6 @@
 package az.edu.turing.module02.part02.MiniProject.DaoPackage;
 
-import az.edu.turing.module02.part02.MiniProject.Family;
+import az.edu.turing.module02.part02.MiniProject.entity.Family;
 
 import java.util.List;
 

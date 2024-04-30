@@ -1,5 +1,14 @@
-package az.edu.turing.module02.part02.MiniProject;
+package az.edu.turing.module02.part02.MiniProject.entity.human;
+import az.edu.turing.module02.part02.MiniProject.entity.DayOfWeek;
+import az.edu.turing.module02.part02.MiniProject.entity.Family;
+import az.edu.turing.module02.part02.MiniProject.entity.pet.Pet;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -7,7 +16,7 @@ import java.util.Objects;
 public class Human {
     private String name;
     private String surname;
-    private int year;
+    private long birthDate;
     private int iq;
     private Family family;
     private Map<DayOfWeek, String> schedule = new HashMap<>();
@@ -15,27 +24,28 @@ public class Human {
     public Human() {
     }
 
-    public Human(String name, String surname, int year) {
+    public Human(String name, String surname, long birthDate) {
         this.name = name;
         this.surname = surname;
-        this.year = year;
+        this.birthDate = birthDate;
     }
 
-    public Human(String name, String surname, int year, Map<DayOfWeek, String> schedule) {
+    public Human(String name, String surname, long birthDate, Map<DayOfWeek, String> schedule) {
         this.name = name;
         this.surname = surname;
-        this.year = year;
+        this.birthDate = birthDate;
         this.schedule = schedule;
     }
 
-    public Human(String name, String surname, int year, int iq, Map<DayOfWeek, String> schedule, Family family) {
+    public Human(String name, String surname, long birthDate, int iq, Map<DayOfWeek, String> schedule, Family family) {
         this.name = name;
         this.surname = surname;
-        this.year = year;
+        this.birthDate = birthDate;
         this.iq = iq;
         this.schedule = schedule;
         this.family = family;
     }
+
     public void greetPet() {
         System.out.printf("Hello, %s", family.getPet().toString());
     }
@@ -45,10 +55,23 @@ public class Human {
         else {
             for (Pet pets : family.getPet()) {
                 System.out.printf("I have a %s, he is %d years old, he is %s.\n",
-                        pets.species, pets.getAge(), pets.getTrickLevel() > 50 ? "very sly" : "almost not sly");
+                        pets.getSpecies(), pets.getAge(), pets.getTrickLevel() > 50 ? "very sly" : "almost not sly");
             }
         }
     }
+
+    public String describeAge() {
+        LocalDate currentDate = LocalDate.now();
+        Period age = Period.between(LocalDate.ofEpochDay(birthDate), currentDate);
+        int years = age.getYears();
+        int months = age.getMonths();
+        int days = age.getDays();
+
+        return "Age: " + years + " years, " + months + " months, " + days + " days";
+
+    }
+
+
     public String getName() {
         return name;
     }
@@ -65,12 +88,12 @@ public class Human {
         this.surname = surname;
     }
 
-    public int getYear() {
-        return year;
+    public long getBirthDate() {
+        return birthDate;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setBirthDate(int birthDate) {
+        this.birthDate = birthDate;
     }
 
     public int getIq() {
@@ -97,18 +120,13 @@ public class Human {
         this.family = family;
     }
 
-    @Override
-    public String toString() {
-        return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}",
-                name, surname, year, iq, schedule.toString());
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
-        return getYear() == human.getYear() &&
+        return getBirthDate() == human.getBirthDate() &&
                 getIq() == human.getIq() &&
                 Objects.equals(getName(), human.getName()) &&
                 Objects.equals(getSurname(), human.getSurname()) &&
@@ -118,7 +136,18 @@ public class Human {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getSurname(), getYear(), getIq(), getFamily(), getSchedule());
+        return Objects.hash(getName(), getSurname(), getBirthDate(), getIq(), getFamily(), getSchedule());
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", year=" + birthDate +
+                ", iq=" + iq +
+                ", schedule=" + schedule +
+                '}';
+
+    }
 }

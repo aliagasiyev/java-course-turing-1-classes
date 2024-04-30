@@ -1,16 +1,20 @@
-package az.edu.turing.module02.part02.MiniProject;
+package az.edu.turing.module02.part02.MiniProject.entity.human;
+import az.edu.turing.module02.part02.MiniProject.entity.DayOfWeek;
+import az.edu.turing.module02.part02.MiniProject.entity.Family;
+import az.edu.turing.module02.part02.MiniProject.entity.human.Human;
+
 import java.util.Map;
 
-public final class Woman extends Human {
+public class Woman extends Human {
         Woman() {
             super();
         }
 
-        Woman(String name, String surname, int year) {
+        public Woman(String name, String surname, int year) {
             super(name, surname, year);
         }
 
-        Woman(String name, String surname, int year, Map<DayOfWeek, String> schedule) {
+        public Woman(String name, String surname, int year, Map<DayOfWeek, String> schedule) {
             super(name, surname, year, schedule);
         }
 

@@ -1,29 +1,31 @@
-package az.edu.turing.module02.part02.MiniProject.DaoPackage;
+package az.edu.turing.module02.part02.MiniProject.service;
 
-import az.edu.turing.module02.part02.MiniProject.*;
+import az.edu.turing.module02.part02.MiniProject.DaoPackage.CollectionFamilyDao;
+import az.edu.turing.module02.part02.MiniProject.DaoPackage.FamilyDao;
+import az.edu.turing.module02.part02.MiniProject.entity.Family;
+import az.edu.turing.module02.part02.MiniProject.entity.human.Human;
+import az.edu.turing.module02.part02.MiniProject.entity.human.Man;
+import az.edu.turing.module02.part02.MiniProject.entity.human.Woman;
+import az.edu.turing.module02.part02.MiniProject.entity.pet.Pet;
 
-import java.nio.channels.ShutdownChannelGroupException;
-import java.security.PublicKey;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class FamilyService {
     private FamilyService familyService;
     private FamilyDao familyDao;
-
-
-    public ArrayList<Family> getAllfamilies() {
+    public List<Family> getAllfamilies() {
         return (ArrayList<Family>) familyDao.getAllFamilies();
     }
-
     public void displayAllFamilies() {
-        familyDao.getAllFamilies().forEach(System.out::println);
+        getAllfamilies().stream()
+                .map(family -> "Familyt: " + family.toString())
+                .forEach(System.out::println);
     }
-
     public List<Family> getFamiliesBiggerThan(int numberOfPeople) {
         List<Family> families = getAllfamilies();
         return families.stream().filter(family ->
@@ -31,10 +33,10 @@ public class FamilyService {
                 collect(Collectors.toList());
     }
 
-    public List<Family> getFamiliesLessThan(int numberOfPeople) {
+    public List<Family> getFamiliesLessThan(int numspeople) {
         List<Family> families = getAllfamilies();
         return families.stream().filter(family ->
-                        family.countFamily() < numberOfPeople).
+                        family.countFamily() < numspeople).
                 collect(Collectors.toList());
     }
 
@@ -73,11 +75,10 @@ public class FamilyService {
         familyDao.saveFamily(family);
         return family;
     }
-//    public Family deleteAllChildrenOlderThen(int age) {
-//        List<Family> families = (List<Family>) familyDao.getAllFamilies();
-//
-//    }
 
+    public void deleteAllChildrenOlderThan(int age) {
+        getAllfamilies().forEach(family ->
+                family.getChildren().removeIf(child -> LocalDate.now().getYear() - child.getBirthDate() > age));}
     public int count() {
         return familyDao.getAllFamilies().size();
     }
@@ -89,7 +90,8 @@ public class FamilyService {
     public Set<Pet> getPets(int index) {
         return familyDao.getFamilyByIndex(index).getPet();
     }
-    public void addPet(int familyindex,Pet pet){
+
+    public void addPet(int familyindex, Pet pet) {
         familyDao.getFamilyByIndex(familyindex).getPet().add(pet);
     }
 }

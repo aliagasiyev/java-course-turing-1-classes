@@ -1,4 +1,8 @@
-package az.edu.turing.module02.part02.MiniProject;
+package az.edu.turing.module02.part02.MiniProject.entity;
+
+import az.edu.turing.module02.part02.MiniProject.entity.human.Human;
+import az.edu.turing.module02.part02.MiniProject.entity.human.Man;
+import az.edu.turing.module02.part02.MiniProject.entity.pet.Pet;
 
 import java.util.*;
 
@@ -16,17 +20,29 @@ public class Family {
         mother.setFamily(this);
         father.setFamily(this);
     }
-
     public Family(Human father, Human mother, Pet pet) {
         this.father = father;
         this.mother = mother;
         this.pet.add(pet);
     }
+
     public void addChild(Human child) {
         if (!children.contains(child)) {
             children.add(child);
             child.setFamily(this);
         }
+    }
+    public String prettyFormat() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("family:\n");
+        sb.append("\tmother: ").append(mother.toString()).append(",\n");
+        sb.append("\tfather: ").append(father.toString()).append(",\n");
+        sb.append("\tchildren: \n");
+        for (Human child : children) {
+            sb.append("\t\t").append(child.toString()).append("\n");
+        }
+        sb.append("\tpets: ").append(pet.toString());
+        return sb.toString();
     }
 
     public boolean deleteChild(int index) {

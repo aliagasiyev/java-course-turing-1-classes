@@ -1,10 +1,10 @@
-package az.edu.turing.module02.part02.MiniProject;
+package az.edu.turing.module02.part02.MiniProject.entity.pet;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-    public abstract class Pet {
+    public  abstract class Pet {
         protected Species species = Species.UNKNOWN;
         private String nickname;
         private int age;
@@ -26,8 +26,9 @@ import java.util.Set;
         public void eat() {
             System.out.println("I am eating");
         }
-
         public abstract void respond();
+
+        public abstract void foul();
         public Species getSpecies() {
             return species;
         }
@@ -89,11 +90,5 @@ import java.util.Set;
         @Override
         public int hashCode() {
             return Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel(), getHabits());
-        }
-
-        @Override
-        protected void finalize() throws Throwable {
-            System.out.println("Object of Pet class deleted");
-            super.finalize();
         }
 }
