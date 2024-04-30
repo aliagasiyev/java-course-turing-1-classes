@@ -1,6 +1,8 @@
 package az.edu.turing.module02.part02.MiniProject.DaoPackage;
 
 import az.edu.turing.module02.part02.MiniProject.entity.Family;
+import az.edu.turing.module02.part02.MiniProject.entity.human.Man;
+import az.edu.turing.module02.part02.MiniProject.entity.human.Woman;
 
 import java.util.List;
 
@@ -39,6 +41,11 @@ public class CollectionFamilyDao implements FamilyDao {
     @Override
     public void saveFamily(Family family) {
          families.add(family);
+
+    }
+
+    @Override
+    public void createNewFamily(Woman woman, Man man) {
 
     }
 
