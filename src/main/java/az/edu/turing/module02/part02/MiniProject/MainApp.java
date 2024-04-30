@@ -71,25 +71,22 @@ public class MainApp {
                         System.out.println(familyController.bornChild(familyDao.getFamilyByIndex(0), "Oskar", "man"));
                         break;
                     case "8.2":
-                        System.out.println(familyController.adoptChild(familyDao.getFamilyByIndex(0), new Human("Aynur", "Eliyeva", 2002)));
+                        System.out.println(familyController.adoptChild(familyDao.getFamilyByIndex(0), new Human("Tommy", "Smith", 2002)));
                         break;
                     case "9":
                         familyController.deleteAllChildrenOlderThan(18);
                         break;
                     case "exit":
-                        System.out.println("Exiting Family Management System. Goodbye!");
+                        System.out.println("Exiting system ");
                         return;
                     default:
-                        System.out.println("Invalid command. Please try again.");
+                        System.out.println("TRY AGAIN");
                 }
             } catch (Exception e) {
                 System.out.println("An error occurred: " + e.getMessage());
                 break;
             }
         }
-
-        familyDao.createNewFamily(new Woman("Unknown", "Unknown", 123), new Man("sdfsd", "adfsdfs", 1232));
-        System.out.println(familyDao.getFamilyByIndex(0).prettyFormat());
 
     }
     private static void printMenu() {
