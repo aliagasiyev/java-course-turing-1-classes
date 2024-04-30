@@ -9,7 +9,11 @@ import java.util.List;
 import java.util.Set;
 
 public class FamilyController {
+
     private FamilyService familyService = new FamilyService();
+
+    public FamilyController(FamilyService familyService) {
+    }
 
     public List<Family> getAllFamilies() {
         return familyService.getAllfamilies();

@@ -6,6 +6,10 @@ import java.util.List;
 
 public class CollectionFamilyDao implements FamilyDao {
     private List<Family> families;
+
+    public CollectionFamilyDao() {
+    }
+
     @Override
     public List<Family> getAllFamilies() {
         return null;

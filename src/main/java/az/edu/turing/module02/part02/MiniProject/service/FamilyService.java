@@ -18,6 +18,14 @@ import java.util.stream.Collectors;
 public class FamilyService {
     private FamilyService familyService;
     private FamilyDao familyDao;
+
+    public FamilyService(FamilyDao familyDao) {
+    }
+
+    public FamilyService() {
+
+    }
+
     public List<Family> getAllfamilies() {
         return (ArrayList<Family>) familyDao.getAllFamilies();
     }
