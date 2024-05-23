@@ -40,7 +40,7 @@ public class Student<A> {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "StudentDto{" +
                 " " + student_data1 +
                 " " + student_data2 +
                 " " + student_data3 +
