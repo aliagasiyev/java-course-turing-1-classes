@@ -109,12 +109,10 @@ VALUES (1, 'Ali', 'Agasiyev', 85.2),
        (2, 'Vaqif', 'Islamov', 89.4),
        (3, 'Akif', 'Salamov', 77.4),
        (4, 'Semed', 'Agasiyev', 88.3);
-
-SELECT *
-FROM personTest
-WHERE person_name = 'Ali'
-  AND person_surname LIKE 'A%';
+-- ALTER TABLE EXAMPLE IS HERE
+ALTER TABLE personTest
+    ADD COLUMN person_age int;
 
 
 
-DROP TABLE cars;
+DROP TABLE personTest;

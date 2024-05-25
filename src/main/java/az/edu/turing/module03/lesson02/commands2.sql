@@ -97,4 +97,20 @@ WHERE Department IN ('HR','IT');
 SELECT FirstName  employer_name
 FROM employees;
 
+SELECT COUNT(Salary)
+FROM employees
+WHERE Salary>50000;
+
+SELECT COUNT(Department)
+FROM employees
+WHERE Department ='IT';
+
+SELECT SUM(Salary)
+FROM employees
+WHERE Department='IT';
+
+SELECT LastName AS SURNAME
+FROM employees;
+
+
 SELECT * FROM employees;
