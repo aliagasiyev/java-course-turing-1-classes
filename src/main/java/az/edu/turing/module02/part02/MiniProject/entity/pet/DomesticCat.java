@@ -1,6 +1,6 @@
 package az.edu.turing.module02.part02.MiniProject.entity.pet;
 
-import az.edu.turing.module02.part02.MiniProject.Foul;
+import az.edu.turing.module02.part02.MiniProject.service.Foul;
 
 import java.util.Set;
 
