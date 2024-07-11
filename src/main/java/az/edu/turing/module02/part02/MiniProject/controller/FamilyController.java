@@ -1,5 +1,6 @@
 package az.edu.turing.module02.part02.MiniProject.controller;
 
+import az.edu.turing.module02.part02.MiniProject.DaoPackage.FamilyDao;
 import az.edu.turing.module02.part02.MiniProject.service.FamilyService;
 import az.edu.turing.module02.part02.MiniProject.entity.Family;
 import az.edu.turing.module02.part02.MiniProject.entity.human.Human;
@@ -11,12 +12,14 @@ import java.util.Set;
 public class FamilyController {
 
     private FamilyService familyService = new FamilyService();
+    private FamilyDao familyDao;
+
 
     public FamilyController(FamilyService familyService) {
     }
 
     public List<Family> getAllFamilies() {
-        return familyService.getAllfamilies();
+        return familyDao.getAllFamilies();
 
     }
 

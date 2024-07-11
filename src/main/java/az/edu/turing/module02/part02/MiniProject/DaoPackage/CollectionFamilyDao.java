@@ -4,17 +4,19 @@ import az.edu.turing.module02.part02.MiniProject.entity.Family;
 import az.edu.turing.module02.part02.MiniProject.entity.human.Man;
 import az.edu.turing.module02.part02.MiniProject.entity.human.Woman;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionFamilyDao implements FamilyDao {
     private List<Family> families;
 
     public CollectionFamilyDao() {
+        this.families=new ArrayList<>();
     }
 
     @Override
     public List<Family> getAllFamilies() {
-        return null;
+        return families;
     }
 
     @Override

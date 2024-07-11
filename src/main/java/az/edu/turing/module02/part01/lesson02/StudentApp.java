@@ -10,7 +10,7 @@ public class StudentApp {
 
         Student student1 = new Student("Elvin #1", 28);
         System.out.println(student1.name);
-//        System.out.println(Student.name);
+//        System.out.println(StudentDto.name);
         System.out.println(student1.grade);
         System.out.println(student1.age);
         System.out.println(student1);
