@@ -20,6 +20,7 @@ public class FamilyService {
     private FamilyDao familyDao;
 
     public FamilyService(FamilyDao familyDao) {
+        this.familyDao=familyDao;
     }
 
     public FamilyService() {
@@ -27,7 +28,7 @@ public class FamilyService {
     }
 
     public List<Family> getAllfamilies() {
-        return (ArrayList<Family>) familyDao.getAllFamilies();
+        return familyDao.getAllFamilies();
     }
     public void displayAllFamilies() {
         getAllfamilies().stream()
@@ -78,6 +79,9 @@ public class FamilyService {
         return family;
     }
 
+    public void saveFamily(Family family){
+
+    }
     public Family adoptChild(Family family, Human child) {
         family.addChild(child);
         familyDao.saveFamily(family);

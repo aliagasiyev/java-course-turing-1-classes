@@ -1,4 +1,4 @@
-package az.edu.turing.module02.part02.MiniProject;
+package az.edu.turing.module02.part02.MiniProject.service;
 
 import az.edu.turing.module02.part02.MiniProject.DaoPackage.CollectionFamilyDao;
 import az.edu.turing.module02.part02.MiniProject.DaoPackage.FamilyDao;
@@ -7,6 +7,7 @@ import az.edu.turing.module02.part02.MiniProject.entity.Family;
 import az.edu.turing.module02.part02.MiniProject.entity.human.Human;
 import az.edu.turing.module02.part02.MiniProject.entity.human.Man;
 import az.edu.turing.module02.part02.MiniProject.entity.human.Woman;
+import az.edu.turing.module02.part02.MiniProject.service.FamilyOverflowException;
 import az.edu.turing.module02.part02.MiniProject.service.FamilyService;
 
 import java.util.Scanner;
@@ -38,6 +39,8 @@ public class MainApp {
                             Woman womanRelish = new Woman("Olive", "Relish", 1977);
                             womanRelish.setIq(77);
                             Family family1 = new Family(manRelish, womanRelish);
+                            familyDao.saveFamily(family);
+                            familyDao.saveFamily(family1);
                         } catch (FamilyOverflowException e) {
                             throw new FamilyOverflowException(e.getMessage());
                         }
@@ -45,7 +48,7 @@ public class MainApp {
                         break;
                     case "2":
                         try {
-                            familyController.displayAllFamilies();
+                          familyService.displayAllFamilies();
                         }catch (FamilyOverflowException e) {
                             throw new FamilyOverflowException(e.getMessage());
                         }
